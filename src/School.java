@@ -23,4 +23,9 @@ public class School {
         return Student.students.stream().anyMatch(student -> !student.isPrepared() && student.age >= 18);
     }
 
+    public ArrayList<Student> passedSubjectBetweent(String subject, double min, double max) {
+        return Student.students.stream()
+                .filter(s -> s.subjects.get(subject) >= min && s.subjects.get(subject) <= max )
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
 }
