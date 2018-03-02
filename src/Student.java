@@ -13,7 +13,7 @@ public class Student {
     };
 
     public Student() {
-        students.add(this);
+        Student.students.add(this);
         for (String subject : subjectNames) {
             subjects.put(subject, 0.0);
         }
@@ -47,6 +47,10 @@ public class Student {
 
     public boolean isPrepared() {
         return isCourseAproved() && getAVG() > 7.0;
+    }
+
+    public Student isMorePrepared() {
+        return Student.students.stream().filter(s -> s.getAVG() > this.getAVG()).findFirst().get();
     }
 
 }
