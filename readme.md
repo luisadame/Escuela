@@ -13,11 +13,11 @@ Deben realizarse los métodos que se indican en cada apartado. Además debe cump
 
 ## Métodos:
 
--   [x]  Método que si le indicas una nota, te devuelva una array separando los alumnos con una nota media mayor o inferior.
--   [x]  Método que te indique si un alumno está bien preparado para la selectividad, es decir ha aprobado el curso y su nota media es mayor que 7.
--   [ ]  Método que te devuelva otro alumno que está preparado para la selectividad pero con mayor nota que el indicado.
--   [ ]  Método que te indique si el instituto tiene alumnos que no están preparados para la selectividad y son mayores de 18 años.
--   [ ]  Método que devuelva los alumnos que aprobaron una asignatura entre dos notas.
--   [ ]  Método que compara si dos alumnos distintos han sacado las mismas notas en todas las asignaturas.
--   [ ]  Método que calcula el tiempo que lleva un alumno en el instituto, a partir de una fecha indicada.
--   [ ]  Método que indique si es instituto nivelado: Si la nota media de todos los que están por debajo es como máximo 2 puntos inferior a la nota media de los que están preparado para la selectividad.
+-   [x]  Issue #1: Método que si le indicas una nota, te devuelva una array separando los alumnos con una nota media mayor o inferior.
+-   [x]  Issue #2: Método que te indique si un alumno está bien preparado para la selectividad, es decir ha aprobado el curso y su nota media es mayor que 7.
+-   [ ]  Issue #3: Método que te devuelva otro alumno que está preparado para la selectividad pero con mayor nota que el indicado.
+-   [ ]  Issue #4: Método que te indique si el instituto tiene alumnos que no están preparados para la selectividad y son mayores de 18 años.
+-   [ ]  Issue #5: Método que devuelva los alumnos que aprobaron una asignatura entre dos notas.
+-   [ ]  Issue #6: Método que compara si dos alumnos distintos han sacado las mismas notas en todas las asignaturas.
+-   [ ]  Issue #7: Método que calcula el tiempo que lleva un alumno en el instituto, a partir de una fecha indicada.
+-   [ ]  Issue #8: Método que indique si es instituto nivelado: Si la nota media de todos los que están por debajo es como máximo 2 puntos inferior a la nota media de los que están preparado para la selectividad.
