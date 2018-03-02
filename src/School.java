@@ -19,4 +19,8 @@ public class School {
         return sortedStudents;
     }
 
+    public boolean studentsNotPreparedAndShould() {
+        return Student.students.stream().anyMatch(student -> !student.isPrepared() && student.age >= 18);
+    }
+
 }

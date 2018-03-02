@@ -6,6 +6,7 @@ public class Student {
 
     public static ArrayList<Student> students = new ArrayList<>();
 
+    public int age;
     private double grade;
     public HashMap<String, Double> subjects = new HashMap<>();
     public String[] subjectNames = new String[]{
@@ -21,6 +22,12 @@ public class Student {
 
     public void setGrade(double grade) {
         this.grade = grade;
+    }
+
+    public void setAVG(double grade) {
+        for (String subject : subjectNames) {
+            subjects.put(subject, grade);
+        }
     }
 
     private boolean validGrade(double grade) {

@@ -1,7 +1,11 @@
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +17,11 @@ class SchoolTest {
     static void prepareObjects() {
         school = new School();
         for (int i = 0; i < 20; i++) {
-            (new Student()).setGrade(Math.floor(Math.random() * 10) + 1);
+            Student k = new Student();
+            if( i == 1 ) k.age = 18;
+            if( i % 2 == 0)
+                k.age = (int) Math.floor(Math.random() * 19) + 17;
+            k.setGrade(Math.floor(Math.random() * 10) + 1);
         }
     }
 
@@ -27,5 +35,23 @@ class SchoolTest {
             System.out.println("---");
         }
 
+        ArrayList<Double> results = school.sortByGrade(5.0).stream()
+                                    .flatMap(Collection::stream)
+                                    .collect(Collectors.toCollection(ArrayList::new))
+                                    .stream().map(Student::getGrade)
+                                    .collect(Collectors.toCollection(ArrayList::new));
+
+        assertFalse(results.contains(5.0));
+    }
+
+    @Test
+    @DisplayName("Test if there are students who are not prepared and are 18.")
+    void testIsNotPreparedAndShould() {
+        assertTrue(school.studentsNotPreparedAndShould());
+        Student.students.clear();
+        Student luis = new Student();
+        luis.age = 18;
+        luis.setAVG(7.1);
+        assertFalse(school.studentsNotPreparedAndShould());
     }
 }

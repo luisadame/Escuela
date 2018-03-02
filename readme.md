@@ -16,7 +16,7 @@ Deben realizarse los métodos que se indican en cada apartado. Además debe cump
 -   [x]  Issue #1: Método que si le indicas una nota, te devuelva una array separando los alumnos con una nota media mayor o inferior.
 -   [x]  Issue #2: Método que te indique si un alumno está bien preparado para la selectividad, es decir ha aprobado el curso y su nota media es mayor que 7.
 -   [x]  Issue #3: Método que te devuelva otro alumno que está preparado para la selectividad pero con mayor nota que el indicado.
--   [ ]  Issue #4: Método que te indique si el instituto tiene alumnos que no están preparados para la selectividad y son mayores de 18 años.
+-   [x]  Issue #4: Método que te indique si el instituto tiene alumnos que no están preparados para la selectividad y son mayores de 18 años.
 -   [ ]  Issue #5: Método que devuelva los alumnos que aprobaron una asignatura entre dos notas.
 -   [ ]  Issue #6: Método que compara si dos alumnos distintos han sacado las mismas notas en todas las asignaturas.
 -   [ ]  Issue #7: Método que calcula el tiempo que lleva un alumno en el instituto, a partir de una fecha indicada.
