@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,5 +68,19 @@ class StudentTest {
         // Assert that the new student has the same marks and that it doesnt.
         assertTrue(newStudent.sameGradesAs(Student.students.get(0)));
         assertFalse(newStudent.sameGradesAs(Student.students.get(5)));
+    }
+
+    /**
+     * Test the method that calculates how long the student has been in school.
+     */
+    @Test
+    void testHowLongInSchool() {
+        // Create a date from where we are going to calculate the time passed.
+        GregorianCalendar date = new GregorianCalendar(2018, 1 - 1, 1);
+        luis.setAtSchoolSince(1, 1, 2017);
+        // Then  give the difference
+        assertEquals("365 days", luis.howLongInSchool(date));
+        luis.setAtSchoolSince(5, 4, 2000);
+        assertNotEquals("365 days", luis.howLongInSchool(date));
     }
 }

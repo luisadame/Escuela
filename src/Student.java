@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -11,6 +8,7 @@ public class Student {
 
     public int age;
     private double grade;
+    private GregorianCalendar atSchoolSince;
     public HashMap<String, Double> subjects = new HashMap<>();
     public String[] subjectNames = new String[]{
             "Maths", "Physics", "IT", "Chemistry", "Biology", "Foreign Language", "Literature", "Philosophy", "Music"
@@ -18,6 +16,7 @@ public class Student {
 
     public Student() {
         Student.students.add(this);
+
         for (String subject : subjectNames) {
             subjects.put(subject, 0.0);
         }
@@ -31,6 +30,10 @@ public class Student {
         for (String subject : subjectNames) {
             subjects.put(subject, grade);
         }
+    }
+
+    public void setAtSchoolSince(int day, int month, int year) {
+        this.atSchoolSince = new GregorianCalendar(year, month - 1, day);
     }
 
     private boolean validGrade(double grade) {
@@ -76,6 +79,14 @@ public class Student {
         ArrayList<Double> grades = this.subjects.values().stream().collect(Collectors.toCollection(ArrayList::new));
         ArrayList<Double> gradesToCompare = compare.subjects.values().stream().collect(Collectors.toCollection(ArrayList::new));
         return grades.equals(gradesToCompare);
+    }
+
+    public String howLongInSchool(GregorianCalendar date) {
+        if(atSchoolSince == null) return null;
+        int daysStart = (int) (atSchoolSince.getTimeInMillis() / (1000 * 60 * 60 * 24));
+        int daysEnd = (int) (date.getTimeInMillis() / (1000 * 60 * 60 * 24));
+        int diff = daysEnd - daysStart < 0 ? 0 : daysEnd - daysStart;
+        return diff > 1 ? diff + " days" : diff + " day";
     }
 
 }
