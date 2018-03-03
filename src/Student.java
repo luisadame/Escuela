@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.OptionalDouble;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Student {
 
@@ -56,8 +59,23 @@ public class Student {
         return isCourseAproved() && getAVG() > 7.0;
     }
 
+    /**
+     * Get the first student from the list that has greater average grade than this.
+     * @return
+     */
     public Student isMorePrepared() {
         return Student.students.stream().filter(s -> s.getAVG() > this.getAVG()).findFirst().get();
+    }
+
+    /**
+     * Get the grades from this student, get the grades from the "compare" student and return the comparison value.
+     * @param compare
+     * @return
+     */
+    public boolean sameGradesAs(Student compare) {
+        ArrayList<Double> grades = this.subjects.values().stream().collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<Double> gradesToCompare = compare.subjects.values().stream().collect(Collectors.toCollection(ArrayList::new));
+        return grades.equals(gradesToCompare);
     }
 
 }

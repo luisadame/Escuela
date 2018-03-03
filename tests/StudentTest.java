@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,5 +54,17 @@ class StudentTest {
         Student better = luis.isMorePrepared();
         assertNotNull(better);
         assertTrue(better.getAVG() > luis.getAVG());
+    }
+
+    @Test
+    void testSameGradesAs() {
+        // Create a student that has the same marks as one of the previously created.
+        Student newStudent = new Student();
+        for (String subject: newStudent.subjectNames) {
+            newStudent.setSubjectGrade(subject, 0.0);
+        }
+        // Assert that the new student has the same marks and that it doesnt.
+        assertTrue(newStudent.sameGradesAs(Student.students.get(0)));
+        assertFalse(newStudent.sameGradesAs(Student.students.get(5)));
     }
 }
