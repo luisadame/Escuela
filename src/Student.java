@@ -40,7 +40,7 @@ public class Student {
         return grade > 0 && grade <= 10;
     }
 
-    public Double getAVG() {
+    public double getAVG() {
         return subjects.values().stream().mapToDouble(Double::doubleValue).average().getAsDouble();
     }
 

@@ -46,6 +46,15 @@ class StudentTest {
     }
 
     @Test
+    void testGetAvg() {
+        Student k = new Student();
+        k.setAVG(7.0);
+        assertEquals(7.0, k.getAVG());
+        assertNotEquals(7.1, k.getAVG());
+    }
+
+
+    @Test
     void testIsMorePrepared() {
         // Set the average grade to a prepared level for luis
         for (String subject: luis.subjectNames) {

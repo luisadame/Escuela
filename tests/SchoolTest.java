@@ -76,4 +76,31 @@ class SchoolTest {
         ArrayList<Student> actual = school.passedSubjectBetweent("Physics", 5.0, 8.0);
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
+
+    @Test
+    void testIsLeveledHighSchool() {
+        // Clear the students.
+        Student.students.clear();
+        // Make a new set of students that are all above 5.
+        for (int i = 0; i < 10; i++) {
+            Student k = new Student();
+            if( i <=4 ) {
+                k.setAVG(6.0);
+            }else{
+                k.setAVG(7.5);
+            }
+        }
+        assertTrue(school.isLeveledHighSchool());
+        Student.students.clear();
+        // Make a new set of students that are all above 5.
+        for (int i = 0; i < 10; i++) {
+            Student k = new Student();
+            if( i <=4 ) {
+                k.setAVG(5.0);
+            }else{
+                k.setAVG(7.5);
+            }
+        }
+        assertFalse(school.isLeveledHighSchool());
+    }
 }

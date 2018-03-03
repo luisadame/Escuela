@@ -20,4 +20,4 @@ Deben realizarse los métodos que se indican en cada apartado. Además debe cump
 -   [x]  Issue #5: Método que devuelva los alumnos que aprobaron una asignatura entre dos notas.
 -   [x]  Issue #6: Método que compara si dos alumnos distintos han sacado las mismas notas en todas las asignaturas.
 -   [x]  Issue #7: Método que calcula el tiempo que lleva un alumno en el instituto, a partir de una fecha indicada.
--   [ ]  Issue #8: Método que indique si es instituto nivelado: Si la nota media de todos los que están por debajo es como máximo 2 puntos inferior a la nota media de los que están preparado para la selectividad.
+-   [x]  Issue #8: Método que indique si es instituto nivelado: Si la nota media de todos los que están por debajo es como máximo 2 puntos inferior a la nota media de los que están preparado para la selectividad.
