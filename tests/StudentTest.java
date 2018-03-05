@@ -1,6 +1,4 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,9 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentTest {
 
     Student luis;
+    static int nTests = 0;
 
     @BeforeAll
     static void beforeAll() {
+        System.out.println("Student Tests");
         for (int i = 0; i < 11; i++) {
             Student k = new Student();
             for (String subject: k.subjectNames) {
@@ -26,6 +26,16 @@ class StudentTest {
     @BeforeEach
     void beforeEach() {
         this.luis = new Student();
+    }
+
+    @AfterEach
+    void afterEach() {
+        System.out.println("Tests done: " + ++nTests);
+    }
+
+    @AfterAll
+    void afterAll() {
+        luis = null;
     }
 
     @Test

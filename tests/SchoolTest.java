@@ -9,6 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class SchoolTest {
 
     static School school;
+    static int nTests = 0;
+
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("SchoolTests");
+    }
 
     @BeforeEach
     void prepareObjects() {
@@ -24,6 +30,7 @@ class SchoolTest {
     @AfterEach
     void afterEach() {
         Student.students.clear();
+        System.out.println("Tests done: " + ++nTests);
     }
 
     @Test
