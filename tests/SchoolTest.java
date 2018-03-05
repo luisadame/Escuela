@@ -1,10 +1,7 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,8 +10,8 @@ class SchoolTest {
 
     static School school;
 
-    @BeforeAll
-    static void prepareObjects() {
+    @BeforeEach
+    void prepareObjects() {
         school = new School();
         for (int i = 0; i < 20; i++) {
             Student k = new Student();
@@ -23,6 +20,10 @@ class SchoolTest {
                 k.age = (int) Math.floor(Math.random() * 19) + 17;
             k.setGrade(Math.floor(Math.random() * 10) + 1);
         }
+    }
+    @AfterEach
+    void afterEach() {
+        Student.students.clear();
     }
 
     @Test
@@ -73,7 +74,7 @@ class SchoolTest {
             }
         }
         // Assert there are 2 students between 5 and 8.
-        ArrayList<Student> actual = school.passedSubjectBetweent("Physics", 5.0, 8.0);
+        ArrayList<Student> actual = school.passedSubjectBetween("Physics", 5.0, 8.0);
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
 
