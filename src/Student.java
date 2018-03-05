@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Student {
@@ -26,6 +25,11 @@ public class Student {
         this.grade = grade;
     }
 
+
+    /**
+     * Set the same grade for every subject.
+     * @param grade double
+     */
     public void setAVG(double grade) {
         for (String subject : subjectNames) {
             subjects.put(subject, grade);
@@ -36,44 +40,60 @@ public class Student {
         this.atSchoolSince = new GregorianCalendar(year, month - 1, day);
     }
 
-    private boolean validGrade(double grade) {
-        return grade > 0 && grade <= 10;
-    }
-
-    public double getAVG() {
-        return subjects.values().stream().mapToDouble(Double::doubleValue).average().getAsDouble();
-    }
-
-    private boolean isCourseAproved() {
-        return subjects.values().stream().noneMatch(s -> s < 5.0);
-    }
-
     public void setSubjectGrade(String subject, Double grade) {
         if(validGrade(grade)) {
             subjects.replace(subject, grade);
         }
     }
 
+    /**
+     * Get the average of the subjects from a student.
+     * @return double
+     */
+    public double getAVG() {
+        return subjects.values().stream().mapToDouble(Double::doubleValue).average().getAsDouble();
+    }
+
     public double getGrade() {
         return grade;
     }
 
+    private boolean validGrade(double grade) {
+        return grade > 0 && grade <= 10;
+    }
+
+    /**
+     * Check if a student's course is approved.
+     * @return boolean
+     */
+    protected boolean isCourseApproved() {
+        return subjects.values().stream().noneMatch(s -> s < 5.0);
+    }
+
+    /**
+     * Check if a student is prepared.
+     * @return boolean
+     */
     public boolean isPrepared() {
-        return isCourseAproved() && getAVG() > 7.0;
+        return isCourseApproved() && getAVG() > 7.0;
     }
 
     /**
      * Get the first student from the list that has greater average grade than this.
-     * @return
+     * @return Student
      */
     public Student isMorePrepared() {
-        return Student.students.stream().filter(s -> s.getAVG() > this.getAVG()).findFirst().get();
+        try {
+            return Student.students.stream().filter(s -> s.getAVG() > this.getAVG()).findFirst().get();
+        } catch (NoSuchElementException e) {
+            return null;
+        }
     }
 
     /**
      * Get the grades from this student, get the grades from the "compare" student and return the comparison value.
-     * @param compare
-     * @return
+     * @param compare Student
+     * @return boolean
      */
     public boolean sameGradesAs(Student compare) {
         ArrayList<Double> grades = this.subjects.values().stream().collect(Collectors.toCollection(ArrayList::new));
@@ -81,6 +101,11 @@ public class Student {
         return grades.equals(gradesToCompare);
     }
 
+    /**
+     * Calculates how many days has been a student in the school.
+     * @param date Given date
+     * @return String
+     */
     public String howLongInSchool(GregorianCalendar date) {
         if(atSchoolSince == null) return null;
         int daysStart = (int) (atSchoolSince.getTimeInMillis() / (1000 * 60 * 60 * 24));

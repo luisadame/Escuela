@@ -12,9 +12,12 @@ class StudentTest {
     Student luis;
     static int nTests = 0;
 
+    /**
+     * Create a set of students which grades are from 0 to 10.
+     */
     @BeforeAll
     static void beforeAll() {
-        System.out.println("Student Tests");
+        System.out.println("Student Tests:");
         for (int i = 0; i < 11; i++) {
             Student k = new Student();
             for (String subject: k.subjectNames) {
@@ -30,24 +33,25 @@ class StudentTest {
 
     @AfterEach
     void afterEach() {
-        System.out.println("Tests done: " + ++nTests);
+        System.out.println("\tTests done: " + ++nTests);
     }
 
-    @AfterAll
-    void afterAll() {
-        luis = null;
-    }
-
+    /**
+     * Test that a student is prepared if its average is greater that 7
+     * and all subjects pass.
+     */
     @Test
     void testIsPrepared() {
         for (String subject: luis.subjectNames) {
             luis.setSubjectGrade(subject, 8.0);
         }
         assertTrue(luis.isPrepared());
+
         for (String subject: luis.subjectNames) {
             luis.setSubjectGrade(subject, 7.0);
         }
         assertFalse(luis.isPrepared());
+
         for (String subject: luis.subjectNames) {
             luis.setSubjectGrade(subject, 10.0);
         }
@@ -63,7 +67,25 @@ class StudentTest {
         assertNotEquals(7.1, k.getAVG());
     }
 
+    @Test
+    void testIsCourseApproved() {
+        luis.setAVG(5.0);
+        assertTrue(luis.isCourseApproved());
+        // As soon as I fail a subject it should return false.
+        luis.setSubjectGrade("Physics", 4.9);
+        assertFalse(luis.isCourseApproved());
+    }
 
+    /**
+     * Test that isMorePrepared returns a student that is more prepared than the current one,
+     * based on the average grade in all subjects.
+     *
+     *  - First create a set of students that range between 1 to 10 in their average grade.
+     *  - Set the average of a student to a value that is know to be worse than other student.
+     *  - Assert that exists a better student based on the created one.
+     *  - Modify the created one to have the maximum average.
+     *  - Assert there is no one better.
+     */
     @Test
     void testIsMorePrepared() {
         // Set the average grade to a prepared level for luis
@@ -75,8 +97,18 @@ class StudentTest {
         Student better = luis.isMorePrepared();
         assertNotNull(better);
         assertTrue(better.getAVG() > luis.getAVG());
+
+        // Set the average grade to the maximum
+        for (String subject: luis.subjectNames) {
+            luis.setSubjectGrade(subject, 10.0);
+        }
+        // Assert there is no one better.
+        assertNull(luis.isMorePrepared());
     }
 
+    /**
+     * Test that sameGradeAs returns true if two students have the same grade in every subject.
+     */
     @Test
     void testSameGradesAs() {
         // Create a student that has the same marks as one of the previously created.

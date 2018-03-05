@@ -1,5 +1,10 @@
 # Escenario Escuela
 
+### How to test:
+- Build the project
+- Run all tests.
+
+### Requisítos:
 Deben realizarse los métodos que se indican en cada apartado. Además debe cumplirse los siguientes requisitos:
 -   Antes de ejecutarse todas las pruebas deben crearse todos los objetos que se van a usar en todas las pruebas.
 -   Antes de cada prueba debe imprimirse por pantalla los elementos a probar.
@@ -11,7 +16,7 @@ Deben realizarse los métodos que se indican en cada apartado. Además debe cump
 -   Todo el proyecto debe subirse a github.
 -   Sólo debe enviarse el link de github como entrega del poyecto.
 
-## Métodos:
+#### Métodos:
 
 -   [x]  Issue #1: Método que si le indicas una nota, te devuelva una array separando los alumnos con una nota media mayor o inferior.
 -   [x]  Issue #2: Método que te indique si un alumno está bien preparado para la selectividad, es decir ha aprobado el curso y su nota media es mayor que 7.

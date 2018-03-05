@@ -2,6 +2,7 @@ import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,34 +14,55 @@ class SchoolTest {
 
     @BeforeAll
     static void beforeAll() {
-        System.out.println("SchoolTests");
+        System.out.println("School Tests:");
     }
 
+    /**
+     * Create a set of students which ages are ranged from 17 to 19.
+     * Set their grades through 1 to 10.
+     */
     @BeforeEach
     void prepareObjects() {
         school = new School();
+        Random rand = new Random();
+
         for (int i = 0; i < 20; i++) {
             Student k = new Student();
             if( i == 1 ) k.age = 18;
             if( i % 2 == 0)
-                k.age = (int) Math.floor(Math.random() * 19) + 17;
-            k.setGrade(Math.floor(Math.random() * 10) + 1);
+                k.age = rand.nextInt(19) + 17;
+            k.setGrade(rand.nextInt(10) + 1);
         }
     }
     @AfterEach
     void afterEach() {
         Student.students.clear();
-        System.out.println("Tests done: " + ++nTests);
+        System.out.println("\tTests done: " + ++nTests);
     }
 
+    /**
+     * Test that sortByGrades returns an array of two arrays which
+     * contains the grades below the given grade and above.
+     *
+     * - Get the the value returned from sortByGrade, flatten the arrays,
+     *  map the values to the grades.
+     * - Assert the given grade is not present in the array of grades.
+     */
     @Test
     void sortByGradeTest() {
 
+        System.out.println("\tSorted by grade test.");
         for (ArrayList<Student> students: school.sortByGrade(5.0)) {
-            for(Student student: students) {
-                System.out.println(student.getGrade());
+            StringBuilder grades = new StringBuilder("\t{");
+            for (int i = 0; i < students.size(); i++) {
+                Student student = students.get(i);
+                if (i == students.size() - 1) {
+                    grades.append(student.getGrade()).append("}");
+                } else {
+                    grades.append(student.getGrade()).append(", ");
+                }
             }
-            System.out.println("---");
+            System.out.println(grades);
         }
 
         ArrayList<Double> results = school.sortByGrade(5.0).stream()
@@ -52,6 +74,12 @@ class SchoolTest {
         assertFalse(results.contains(5.0));
     }
 
+    /**
+     * - In the random set of students there is going to be for sure a student
+     *  that is not prepared.
+     * - Then clear the students. Make a new student. Make it prepared.
+     * - Now the method returns false because there are no students unprepared.
+     */
     @Test
     @DisplayName("Test if there are students who are not prepared and are 18.")
     void testIsNotPreparedAndShould() {
