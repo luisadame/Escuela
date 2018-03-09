@@ -19,9 +19,7 @@ public class isMorePrepared extends StudentTest {
     @Test
     void testIsMorePrepared() {
         // Set the average grade to a prepared level for luis
-        for (String subject: luis.subjectNames) {
-            luis.setSubjectGrade(subject, 8.0);
-        }
+        luis.setAVG(8.0);
 
         // Get the first student who has a greater grade.
         Student better = luis.isMorePrepared();
@@ -33,6 +31,15 @@ public class isMorePrepared extends StudentTest {
             luis.setSubjectGrade(subject, 10.0);
         }
         // Assert there is no one better.
+        assertNull(luis.isMorePrepared());
+    }
+
+    /**
+     * Test with only one student.
+     */
+    @Test
+    void testIsMorePreparedWithOneStudent() {
+        Student.students.removeIf(s -> !s.equals(luis));
         assertNull(luis.isMorePrepared());
     }
 }
