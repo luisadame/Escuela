@@ -11,5 +11,6 @@ public class getAVG extends StudentTest {
         k.setAVG(7.0);
         assertEquals(7.0, k.getAVG());
         assertNotEquals(7.1, k.getAVG());
+        assertNotEquals(6.9, k.getAVG());
     }
 }
