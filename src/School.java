@@ -62,9 +62,6 @@ public class School {
         // See if they differ more than two points between.
         if (avgFromPrepared.isPresent() && avgFromNotPrepared.isPresent()) {
             return (avgFromPrepared.getAsDouble() - avgFromNotPrepared.getAsDouble()) < 2.0;
-        } else if (!avgFromNotPrepared.isPresent()) {
-            return true;
-        }
-        return false;
+        } else return !avgFromNotPrepared.isPresent() && avgFromPrepared.isPresent();
     }
 }

@@ -18,6 +18,7 @@ public class isMorePrepared extends StudentTest {
      */
     @Test
     void testIsMorePrepared() {
+        StudentTest.beforeAll();
         // Set the average grade to a prepared level for luis
         luis.setAVG(8.0);
 
