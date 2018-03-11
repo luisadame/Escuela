@@ -1,3 +1,5 @@
+import org.w3c.dom.ranges.RangeException;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,6 +33,7 @@ public class Student {
      * @param grade double
      */
     public void setAVG(double grade) {
+        if(!validGrade(grade)) return;
         for (String subject : subjectNames) {
             subjects.put(subject, grade);
         }
@@ -75,7 +78,7 @@ public class Student {
      * @return boolean
      */
     public boolean isPrepared() {
-        return isCourseApproved() && getAVG() > 7.0;
+        return isCourseApproved() && getAVG() > 7.0 && getAVG() <= 10.0;
     }
 
     /**

@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test with random values, then with 17, 18 and 19 years old.
+ */
 public class isNotPreparedAndShould extends SchoolTest {
 
     /**
@@ -21,5 +24,44 @@ public class isNotPreparedAndShould extends SchoolTest {
         luis.age = 18;
         luis.setAVG(7.1);
         assertFalse(school.studentsNotPreparedAndShould());
+    }
+
+    @Test
+    void testWith17() {
+        Student.students.clear();
+
+        for (int i = 0; i < 3; i++) {
+            Student k = new Student();
+            k.age = 17;
+            k.setAVG(6.0);
+        }
+
+        assertFalse(school.studentsNotPreparedAndShould());
+    }
+
+    @Test
+    void testWith18() {
+        Student.students.clear();
+
+        for (int i = 0; i < 3; i++) {
+            Student k = new Student();
+            k.age = 18;
+            k.setAVG(6.0);
+        }
+
+        assertTrue(school.studentsNotPreparedAndShould());
+    }
+
+    @Test
+    void testWith19() {
+        Student.students.clear();
+
+        for (int i = 0; i < 3; i++) {
+            Student k = new Student();
+            k.age = 19;
+            k.setAVG(6.0);
+        }
+
+        assertTrue(school.studentsNotPreparedAndShould());
     }
 }

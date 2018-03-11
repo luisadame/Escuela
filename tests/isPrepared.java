@@ -11,20 +11,33 @@ public class isPrepared extends StudentTest {
      */
     @Test
     void testIsPrepared() {
-        for (String subject: luis.subjectNames) {
-            luis.setSubjectGrade(subject, 8.0);
-        }
+        luis.setAVG(8.0);
         assertTrue(luis.isPrepared());
 
-        for (String subject: luis.subjectNames) {
-            luis.setSubjectGrade(subject, 7.0);
-        }
+        luis.setAVG(7.0);
         assertFalse(luis.isPrepared());
 
-        for (String subject: luis.subjectNames) {
-            luis.setSubjectGrade(subject, 10.0);
-        }
+        luis.setAVG(10.0);
         luis.subjects.replace("Maths", 4.9);
+        assertFalse(luis.isPrepared());
+    }
+
+    /**
+     * Usar la tecnica de particiones equivalentes y valores limites.
+     * Use equivalents partitions technique and limit values.
+     */
+    @Test
+    void testIsPreparedWithInvalidCase() {
+        luis.setAVG(6.9);
+        assertFalse(luis.isPrepared());
+
+        luis.setAVG(10.1);
+        assertFalse(luis.isPrepared());
+
+        luis.setAVG(Integer.MIN_VALUE);
+        assertFalse(luis.isPrepared());
+
+        luis.setAVG(Integer.MAX_VALUE);
         assertFalse(luis.isPrepared());
     }
 }
