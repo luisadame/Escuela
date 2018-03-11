@@ -21,6 +21,8 @@ class SchoolTest extends Test {
                 k.age = rand.nextInt(19) + 17;
             k.setGrade(rand.nextInt(10) + 1);
         }
+        // add a null element
+        Student.students.set(7, null);
     }
     @AfterEach
     void afterEach() {

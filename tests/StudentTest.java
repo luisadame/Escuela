@@ -15,6 +15,9 @@ class StudentTest extends Test {
                 k.setSubjectGrade(subject, (double) i);
             }
         }
+
+        // add a null element
+        Student.students.set(7, null);
     }
 
     @BeforeEach

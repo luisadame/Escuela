@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -40,7 +42,8 @@ public class isMorePrepared extends StudentTest {
      */
     @Test
     void testIsMorePreparedWithOneStudent() {
-        Student.students.removeIf(s -> !s.equals(luis));
+        Student.students
+                .removeIf(s -> s == null || !s.equals(luis));
         assertNull(luis.isMorePrepared());
     }
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,11 @@ public class School {
         ArrayList<ArrayList<Student>> sortedStudents = new ArrayList<>();
 
         ArrayList<Student> above = Student.students.stream()
+                                    .filter(Objects::nonNull)
                                     .filter(student -> student.getGrade() < grade)
                                     .collect(Collectors.toCollection(ArrayList::new));
         ArrayList<Student> below = Student.students.stream()
+                                    .filter(Objects::nonNull)
                                     .filter(student -> student.getGrade() > grade)
                                     .collect(Collectors.toCollection(ArrayList::new));
 
@@ -31,7 +34,7 @@ public class School {
      * @return boolean
      */
     public boolean studentsNotPreparedAndShould() {
-        return Student.students.stream().anyMatch(student -> !student.isPrepared() && student.age >= 18);
+        return Student.students.stream().filter(Objects::nonNull).anyMatch(student -> !student.isPrepared() && student.age >= 18);
     }
 
     /**

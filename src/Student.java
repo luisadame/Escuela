@@ -84,7 +84,9 @@ public class Student {
      */
     public Student isMorePrepared() {
         try {
-            return Student.students.stream().filter(s -> s.getAVG() > this.getAVG()).findFirst().get();
+            return Student.students.stream()
+                    .filter(Objects::nonNull)
+                    .filter(s -> s.getAVG() > this.getAVG()).findFirst().get();
         } catch (NoSuchElementException e) {
             return null;
         }

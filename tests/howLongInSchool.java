@@ -13,7 +13,7 @@ public class howLongInSchool extends StudentTest {
     @Test
     void testHowLongInSchool() {
         // Create a date from where we are going to calculate the time passed.
-        GregorianCalendar date = new GregorianCalendar(2018, 1 - 1, 1);
+        GregorianCalendar date = new GregorianCalendar(2018, 0, 1);
         luis.setAtSchoolSince(1, 1, 2017);
         // Then  give the difference
         assertEquals("365 days", luis.howLongInSchool(date));
