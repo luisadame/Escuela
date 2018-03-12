@@ -9,6 +9,7 @@ public class howLongInSchool extends StudentTest {
 
     /**
      * Test the method that calculates how long the student has been in school.
+     * Use of decision coverage technique.
      */
     @Test
     void testHowLongInSchool() {

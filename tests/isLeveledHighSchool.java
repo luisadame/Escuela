@@ -21,6 +21,9 @@ public class isLeveledHighSchool extends SchoolTest {
 
     /**
      * If there's just one student and it is prepared then the school should be leveled.
+     * With this one I make use of the technique sentence coverage.
+     * Making sure that if there are not prepared students returns false,
+     * and if there are only prepared students it returns true.
      */
     @Test
     void withOneStudent() {

@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test with random values, then with 17, 18 and 19 years old.
+ * Limit values technique.
  */
 public class isNotPreparedAndShould extends SchoolTest {
 
@@ -50,6 +51,16 @@ public class isNotPreparedAndShould extends SchoolTest {
         }
 
         assertTrue(school.studentsNotPreparedAndShould());
+
+        Student.students.clear();
+
+        for (int i = 0; i < 3; i++) {
+            Student k = new Student();
+            k.age = 18;
+            k.setAVG(7.1);
+        }
+
+        assertFalse(school.studentsNotPreparedAndShould());
     }
 
     @Test
@@ -63,5 +74,15 @@ public class isNotPreparedAndShould extends SchoolTest {
         }
 
         assertTrue(school.studentsNotPreparedAndShould());
+
+        Student.students.clear();
+
+        for (int i = 0; i < 3; i++) {
+            Student k = new Student();
+            k.age = 19;
+            k.setAVG(7.1);
+        }
+
+        assertFalse(school.studentsNotPreparedAndShould());
     }
 }

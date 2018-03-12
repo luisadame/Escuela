@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class isCourseApproved extends StudentTest {
 
+    /**
+     * Use of decision coverage technique.
+     */
     @Test
     void testIsCourseApproved() {
         luis.setAVG(5.0);
