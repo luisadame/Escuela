@@ -12,12 +12,23 @@ public class howLongInSchool extends StudentTest {
      * Use of decision coverage technique.
      */
     @Test
-    void testHowLongInSchool() {
+    void testValidCase() {
         // Create a date from where we are going to calculate the time passed.
         GregorianCalendar date = new GregorianCalendar(2018, 0, 1);
         luis.setAtSchoolSince(1, 1, 2017);
-        // Then  give the difference
         assertEquals("365 days", luis.howLongInSchool(date));
+    }
+
+    @Test
+    void testLeapYears() {
+        GregorianCalendar date = new GregorianCalendar(2017, 0, 1);
+        luis.setAtSchoolSince(1, 1, 2016);
+        assertEquals("366 days", luis.howLongInSchool(date));
+    }
+
+    @Test
+    void testInvalidCase() {
+        GregorianCalendar date = new GregorianCalendar(2018, 0, 1);
         luis.setAtSchoolSince(5, 4, 2000);
         assertNotEquals("365 days", luis.howLongInSchool(date));
     }
