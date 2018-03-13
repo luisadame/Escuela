@@ -23,7 +23,7 @@ public class getAVG extends StudentTest {
         luis.setAVG(max);
         assertEquals(max, luis.getAVG());
     }
-    
+
     /**
      * In these tests apart from using the black box techniques,
      * we make statement coverage tests by making sure that the grade doesn't change.
