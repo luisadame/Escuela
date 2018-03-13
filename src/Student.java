@@ -62,7 +62,7 @@ public class Student {
     }
 
     private boolean validGrade(double grade) {
-        return grade > 0 && grade <= 10;
+        return grade > 0.00 && grade <= 10.00;
     }
 
     /**
