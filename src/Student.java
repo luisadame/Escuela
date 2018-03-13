@@ -43,7 +43,7 @@ public class Student {
         this.atSchoolSince = new GregorianCalendar(year, month - 1, day);
     }
 
-    public void setSubjectGrade(String subject, Double grade) {
+    public void setSubjectGrade(String subject, double grade) {
         if(validGrade(grade)) {
             subjects.replace(subject, grade);
         }
@@ -70,7 +70,7 @@ public class Student {
      * @return boolean
      */
     protected boolean isCourseApproved() {
-        return subjects.values().stream().noneMatch(s -> s < 5.0);
+        return subjects.values().stream().noneMatch(s -> s == null || s < 5.0);
     }
 
     /**
