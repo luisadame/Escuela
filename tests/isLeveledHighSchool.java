@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test with no students, with one, and many.
+ * Use of decision coverage technique by creating:
+ *  - No prepared students only (which should return false)
+ *  - Prepared students only (should return true)
+ *  - No students at all (returns false)
+ *  - Mix of students (which should be different for each of them)
  */
 public class isLeveledHighSchool extends SchoolTest {
 

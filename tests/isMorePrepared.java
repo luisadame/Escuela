@@ -17,6 +17,9 @@ public class isMorePrepared extends StudentTest {
      *  - Assert that exists a better student based on the created one.
      *  - Modify the created one to have the maximum average.
      *  - Assert there is no one better.
+     *
+     *  Use of decision coverage by removing all students and letting just the one
+     *  which the function will run on. And this should return null as stated in the own function.
      */
     @Test
     void testIsMorePrepared() {

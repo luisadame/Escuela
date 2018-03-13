@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class isPrepared extends StudentTest {
 
     /**
-     * Test that a student is prepared if its average is greater that 7
+     * Test that a student is prepared if its average is greater than 7
      * and all subjects pass.
      */
     @Test

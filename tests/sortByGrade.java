@@ -8,6 +8,11 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Makes use of statement coverage.
+ * Hace uso de la cobertura de sentencias creando conjuntos específicos
+ * de notas.
+ */
 public class sortByGrade extends SchoolTest {
 
     /**
