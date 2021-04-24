@@ -1,3 +1,5 @@
+## Note: this repository was used for when I was taking classes for my higher degree
+
 # Escenario Escuela
 
 ### How to test:
